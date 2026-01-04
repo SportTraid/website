@@ -25,11 +25,12 @@ export default function Navbar() {
         } rounded-full px-6 py-3 shadow-lg w-[90%] md:w-[80%] lg:w-[60%]`}
       >
         <div className="flex items-center justify-between gap-8 w-full">
-        <motion.div
+        <motion.a
+          href="/"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
         >
           <Image
             src="/assets/T logomark.png"
@@ -39,22 +40,31 @@ export default function Navbar() {
             className="w-8 h-8 flex-shrink-0"
             style={{ objectFit: 'contain' }}
           />
-        </motion.div>
+        </motion.a>
         <div className="flex items-center gap-6">
           <motion.a
-            href="#features"
+            href="/about"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             className="text-sm text-gray-300 hover:text-white transition-colors cursor-pointer"
           >
-            Features
+            About
           </motion.a>
           <motion.a
-            href="#contact"
+            href="/#features"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.35 }}
+            className="text-sm text-gray-300 hover:text-white transition-colors cursor-pointer"
+          >
+            Features
+          </motion.a>
+          <motion.a
+            href="/#contact"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
             className="text-sm text-gray-300 hover:text-white transition-colors cursor-pointer"
           >
             Contact
@@ -62,7 +72,7 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.45 }}
             className="text-sm text-gray-400"
           >
             Coming Soon
