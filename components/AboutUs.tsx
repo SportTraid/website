@@ -49,18 +49,14 @@ export default function AboutUs() {
 
           {/* Opening Statement */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               Triad was built from a hard truth we've seen for over 20 years of coaching across youth, college, and the professional game:
             </p>
-            <p className="text-xl sm:text-2xl text-white leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               Some of the most talented athletes don't fall short because of ability. They fall short because they aren't equipped cognitively to handle what sport is demanding of them.
             </p>
-          </motion.div>
-
-          {/* Examples */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <p className="text-lg sm:text-xl text-gray-400 leading-relaxed">
-              We've watched confident players freeze under pressure. We've seen athletes avoid risk because fear of failure feels safer than making a mistake. We've seen players with every technical tool still struggle—because they never learned how to reset, self-regulate, refocus, or respond when the game gets hard.
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              We've watched confident players freeze under pressure. We've seen athletes avoid risk because fear of failure feels safer than making a mistake. We've seen players with every technical tool still struggle because they never learned how to reset, self-regulate, refocus, or respond when the game gets hard.
             </p>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               Not because they don't care.
@@ -76,10 +72,10 @@ export default function AboutUs() {
               The Missing Pillar
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Youth development pours time into three pillars: technical, tactical, and physical. But the cognitive pillar—confidence, composure, resilience, focus, decision-making—often gets ignored.
+              Youth development pours time into three pillars: technical, tactical, and physical. But the cognitive pillar-confidence, composure, resilience, focus, decision-making often gets ignored.
             </p>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Even in many coaching education pathways, the cognitive side is rarely a priority. Coaches learn structure, systems, and session design… but the tools that help a young athlete battle fear head-on, stay consistent, and grow through adversity are frequently left out.
+              Even in many coaching education pathways, the cognitive side is rarely a priority. Coaches learn structure, systems, and session design, but the tools that help a young athlete battle fear head-on, stay consistent, and grow through adversity are frequently left out.
             </p>
             <p className="text-xl sm:text-2xl text-white leading-relaxed font-medium">
               Yet cognitive strength is the multiplier.
@@ -117,7 +113,7 @@ export default function AboutUs() {
               Our Mission
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Triad exists to help athletes train the mind like they train the body—with real tools they can use daily.
+              Triad exists to help athletes train the mind like they train the body,with real tools they can use daily.
             </p>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               We're here to help young athletes:
@@ -152,13 +148,13 @@ export default function AboutUs() {
               Because the goal isn't just better performance.
             </p>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              It's helping kids grow into confident young athletes—and ultimately into resilient, productive adults who know how to handle pressure, adversity, and challenge in sport and in life.
+              It's helping kids grow into confident young athletes and ultimately into resilient, productive adults who know how to handle pressure, adversity, and challenge in sport and in life.
             </p>
             <p className="text-2xl sm:text-3xl md:text-4xl text-white leading-relaxed font-bold text-center pt-8" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 700, letterSpacing: '-0.068em' }}>
-              When we develop the mind, we don't just build better athletes—
+              When we develop the mind, we don't just build better athletes,
             </p>
             <p className="text-2xl sm:text-3xl md:text-4xl gradient-text leading-relaxed font-bold text-center" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 700, letterSpacing: '-0.068em' }}>
-              we build stronger humans.
+              We build stronger humans.
             </p>
           </motion.div>
         </motion.div>
