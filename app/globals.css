@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.068em;
+}
+
+main {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+footer {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  height: 0;
+}
+
+section:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+img[alt="Triad Sports"] {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  vertical-align: bottom;
+  line-height: 0;
+}
+
+section:last-of-type,
+section:last-of-type > *,
+section:last-of-type > * > * {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.gradient-border-button {
+  position: relative;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f97316 75%,
+    #ef4444 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+              0 0 40px rgba(139, 92, 246, 0.3),
+              0 0 60px rgba(236, 72, 153, 0.2);
+}
+
+.gradient-border-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f97316 75%,
+    #ef4444 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.7;
+}
+
+.gradient-border-button-inner {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #1a1a1a;
+  border-radius: 9999px;
+  color: #e5e7eb;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .gradient-border-button-inner {
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gradient-border-button-inner {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f97316 75%,
+    #ef4444 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.feature-card {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f97316 75%,
+    #ef4444 100%
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::before {
+  opacity: 0.7;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.feature-card:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+              0 0 40px rgba(139, 92, 246, 0.3),
+              0 0 60px rgba(236, 72, 153, 0.2);
+}
+
+@media (min-width: 768px) {
+  .gradient-border-card-inner {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .feature-grid-new {
+    grid-template-rows: repeat(27, 1fr);
+    height: 70vh;
+    max-height: 600px;
+  }
+  .persistent-memory {
+    grid-row: 1 / 14;
+    grid-column: 1;
+  }
+  .journaling {
+    grid-row: 14 / 21;
+    grid-column: 1;
+  }
+  .knowledge-graph {
+    grid-row: 1 / 8;
+    grid-column: 2;
+  }
+  .privacy {
+    grid-row: 8 / 21;
+    grid-column: 2;
+  }
+  .conversational-intelligence {
+    grid-row: 21 / 28;
+    grid-column: 1;
+  }
+  .intelligent-nudges {
+    grid-row: 21 / 28;
+    grid-column: 2;
+  }
+}
+
