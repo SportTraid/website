@@ -63,8 +63,19 @@ function TypewriterChatbox() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 pt-20">
-      <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center gap-5">
+    <section className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 pt-20 overflow-hidden">
+      {/* Background gradient image */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          backgroundImage: 'url(/assets/hero%20gradient.png)',
+          backgroundSize: '110%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0,
+        }}
+      />
+      <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center gap-5 relative z-10">
         {/* Badge - Coming Soon */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
