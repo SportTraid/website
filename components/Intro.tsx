@@ -5,26 +5,33 @@ import { useRef, useMemo } from 'react'
 
 const texts = [
   'Train the brain and the body will reach its potential.',
-  'Triad exists to help young athletes chase their dreams in life.'
+  'Triad exists to help young athletes chase their dreams in life.',
 ]
 
-function Word({ word, globalIndex, totalWords, scrollYProgress, textIndex }: { word: string, globalIndex: number, totalWords: number, scrollYProgress: any, textIndex: number }) {
-  // Last line (textIndex === 1) should have full opacity, others should have reduced opacity
-  const maxOpacity = textIndex === 1 ? 1 : 0.6
-  
+function Word({
+  word,
+  globalIndex,
+  totalWords,
+  scrollYProgress,
+}: {
+  word: string
+  globalIndex: number
+  totalWords: number
+  scrollYProgress: any
+}) {
+  const startReveal = (globalIndex / totalWords) * 0.7
+  const midReveal = ((globalIndex + 0.5) / totalWords) * 0.7
+  const endReveal = ((globalIndex + 1) / totalWords) * 0.7
+
   const opacity = useTransform(
     scrollYProgress,
-    [
-      (globalIndex / totalWords) * 0.65,
-      ((globalIndex + 0.5) / totalWords) * 0.65,
-      ((globalIndex + 1) / totalWords) * 0.65
-    ],
-    [0, maxOpacity, maxOpacity]
+    [startReveal, midReveal, endReveal],
+    [0.25, 0.75, 1]
   )
-  
+
   return (
     <motion.span
-      style={{ opacity }}
+      style={{ opacity, transition: 'opacity 0.15s ease-out' }}
       className="inline"
     >
       {word}
@@ -36,64 +43,60 @@ export default function Intro() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.8', 'end 0.2']
+    offset: ['start 0.85', 'end 0.15'],
   })
 
   const wordData = useMemo(() => {
     let globalIndex = 0
     return texts.map((text) => {
       const words = text.split(' ')
-      const wordItems = words.map((word, wordIndex) => {
-        const item = {
-          word: word,
-          hasSpace: wordIndex < words.length - 1,
-          globalIndex: globalIndex++
-        }
-        return item
-      })
-      return wordItems
+      return words.map((word, wordIndex) => ({
+        word,
+        hasSpace: wordIndex < words.length - 1,
+        globalIndex: globalIndex++,
+      }))
     })
   }, [])
 
   const totalWords = wordData.flat().length
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 pt-20 pb-0" style={{ marginBottom: 0, paddingBottom: 0 }}>
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-6">
-            {wordData.map((words, textIndex) => {
-              const isFirstLine = textIndex === 0
-              const isSecondLine = textIndex === 1
-              
-              return (
-                <div 
-                  key={textIndex} 
-                  className={`text-4xl sm:text-5xl md:text-6xl font-bold leading-tight ${
-                    isFirstLine ? 'text-white' : 
-                    isSecondLine ? 'gradient-text font-semibold' : 
-                    'text-gray-300'
-                  }`}
-                >
-                  {words.map((item, wordIndex) => (
-                    <span key={wordIndex}>
-                      <Word
-                        word={item.word}
-                        globalIndex={item.globalIndex}
-                        totalWords={totalWords}
-                        scrollYProgress={scrollYProgress}
-                        textIndex={textIndex}
-                      />
-                      {item.hasSpace && ' '}
-                    </span>
-                  ))}
-                </div>
-              )
-            })}
+    <section
+      ref={ref}
+      className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20"
+    >
+      <div className="w-full flex items-center justify-center">
+        <div className="text-center" style={{ maxWidth: '75vw' }}>
+          <div className="space-y-8">
+            {wordData.map((words, textIndex) => (
+              <h1
+                key={textIndex}
+                className="font-syne !font-normal text-foreground leading-[1.1] !normal-case"
+                style={{ 
+                  fontSize: 'clamp(1.2rem, 4.8vw, 5.2rem)', 
+                  fontWeight: 400, 
+                  letterSpacing: '-0.03em',
+                  maxWidth: '75vw',
+                  width: '75vw',
+                  textTransform: 'none'
+                }}
+              >
+                {words.map((item, wordIndex) => (
+                  <span key={wordIndex}>
+                    <Word
+                      word={item.word}
+                      globalIndex={item.globalIndex}
+                      totalWords={totalWords}
+                      scrollYProgress={scrollYProgress}
+                    />
+                    {item.hasSpace && ' '}
+                  </span>
+                ))}
+              </h1>
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
 }
-

@@ -10,7 +10,7 @@ export default function HelpUsBuild() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    organization: ''
+    organization: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -19,9 +19,8 @@ export default function HelpUsBuild() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
-    // Reset status when user starts typing
     if (submitStatus !== 'idle') {
       setSubmitStatus('idle')
       setErrorMessage('')
@@ -61,33 +60,33 @@ export default function HelpUsBuild() {
   }
 
   return (
-    <section 
+    <section
       id="contact"
-      ref={ref} 
-      className="flex items-center justify-center px-6 sm:px-8 lg:px-12 pt-[3.168rem] pb-8 md:pt-[4.752rem] md:pb-12"
+      ref={ref}
+      className="flex items-center justify-center px-6 sm:px-8 lg:px-12 py-20 md:py-28"
     >
-      <div className="max-w-4xl mx-auto w-full text-center">
+      <div className="max-w-3xl mx-auto w-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="flex flex-col gap-8"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 700, letterSpacing: '-0.068em' }}>
+          <h2 className="text-fluid-4xl font-ibm-plex-mono font-normal uppercase tracking-wide">
             Help Us Build
           </h2>
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 leading-relaxed mb-8">
-            We're building something meaningful for youth sports. 
+          <p className="text-fluid-xl text-muted-foreground leading-relaxed font-inter">
+            We&apos;re building something meaningful for youth sports.
             <br />
             Join us on this journey.
           </p>
-          
+
           <motion.form
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             onSubmit={handleSubmit}
-            className="max-w-2xl mx-auto space-y-6"
+            className="max-w-xl mx-auto w-full flex flex-col gap-4"
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -101,7 +100,7 @@ export default function HelpUsBuild() {
                 onChange={handleChange}
                 placeholder="Name"
                 required
-                className="w-full px-6 py-4 bg-[#1a1a1a] border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition-all duration-300 text-lg"
+                className="w-full px-6 py-4 bg-transparent border border-border rounded-2xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-foreground/30 transition-all duration-300 text-fluid-base font-inter"
               />
             </motion.div>
 
@@ -117,7 +116,7 @@ export default function HelpUsBuild() {
                 onChange={handleChange}
                 placeholder="Email"
                 required
-                className="w-full px-6 py-4 bg-[#1a1a1a] border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition-all duration-300 text-lg"
+                className="w-full px-6 py-4 bg-transparent border border-border rounded-2xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-foreground/30 transition-all duration-300 text-fluid-base font-inter"
               />
             </motion.div>
 
@@ -133,7 +132,7 @@ export default function HelpUsBuild() {
                 onChange={handleChange}
                 placeholder="Organization"
                 required
-                className="w-full px-6 py-4 bg-[#1a1a1a] border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition-all duration-300 text-lg"
+                className="w-full px-6 py-4 bg-transparent border border-border rounded-2xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-foreground/30 transition-all duration-300 text-fluid-base font-inter"
               />
             </motion.div>
 
@@ -141,14 +140,10 @@ export default function HelpUsBuild() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex justify-center"
+              className="flex justify-center pt-2"
             >
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="gradient-border-button"
-              >
-                <span className="gradient-border-button-inner">
+              <button type="submit" disabled={isSubmitting} className="stroke-button">
+                <span className="stroke-button-inner">
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </span>
               </button>
@@ -158,9 +153,9 @@ export default function HelpUsBuild() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-4 bg-green-500/20 border border-green-500/50 rounded-2xl text-green-400"
+                className="p-4 border border-green-500/30 rounded-2xl text-green-400 font-inter text-fluid-sm"
               >
-                Thank you! We've received your message and will get back to you soon.
+                Thank you! We&apos;ve received your message and will get back to you soon.
               </motion.div>
             )}
 
@@ -168,7 +163,7 @@ export default function HelpUsBuild() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-4 bg-red-500/20 border border-red-500/50 rounded-2xl text-red-400"
+                className="p-4 border border-red-500/30 rounded-2xl text-red-400 font-inter text-fluid-sm"
               >
                 {errorMessage || 'Something went wrong. Please try again.'}
               </motion.div>
@@ -179,4 +174,3 @@ export default function HelpUsBuild() {
     </section>
   )
 }
-

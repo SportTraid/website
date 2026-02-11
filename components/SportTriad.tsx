@@ -10,7 +10,11 @@ export default function SportTriad() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative w-full" style={{ marginBottom: 0, paddingBottom: 0, marginTop: 0, paddingTop: 0, lineHeight: 0 }}>
+    <section
+      ref={ref}
+      className="relative w-full"
+      style={{ marginBottom: 0, paddingBottom: 0, marginTop: 0, paddingTop: 0, lineHeight: 0 }}
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -18,16 +22,28 @@ export default function SportTriad() {
         className="relative w-full flex justify-center items-end"
         style={{ marginBottom: 0, paddingBottom: 0, marginTop: 0, paddingTop: 0, lineHeight: 0 }}
       >
-        <div className="relative w-[95%]" style={{ marginBottom: 0, paddingBottom: 0, lineHeight: 0 }}>
+        <div className="relative w-[90%] max-w-5xl" style={{ marginBottom: 0, paddingBottom: 0, lineHeight: 0 }}>
           <div className="relative w-full" style={{ marginBottom: 0, paddingBottom: 0, lineHeight: 0 }}>
+            {/* Dark mode: white logo */}
             <Image
-              src="/assets/sporttriad.png"
-              alt="Triad Sports"
+              src="/assets/SPORTTRIAD-white.png"
+              alt="SportTriad"
               width={1200}
               height={600}
-              className="w-full h-auto object-contain object-bottom"
+              className="w-full h-auto object-contain object-bottom hidden dark:block"
               priority
-              sizes="95vw"
+              sizes="90vw"
+              style={{ marginBottom: 0, paddingBottom: 0, display: 'block', verticalAlign: 'bottom', lineHeight: 0 }}
+            />
+            {/* Light mode: black logo */}
+            <Image
+              src="/assets/SPORTTRIAD-black.png"
+              alt="SportTriad"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-contain object-bottom block dark:hidden"
+              priority
+              sizes="90vw"
               style={{ marginBottom: 0, paddingBottom: 0, display: 'block', verticalAlign: 'bottom', lineHeight: 0 }}
             />
           </div>
@@ -36,4 +52,3 @@ export default function SportTriad() {
     </section>
   )
 }
-

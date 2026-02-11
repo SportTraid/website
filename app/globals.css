@@ -2,11 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Color Tokens ===== */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --background: #0E100F;
+  --foreground: #F8F7F2;
+  --muted: rgba(248, 247, 242, 0.5);
+  --muted-foreground: rgba(248, 247, 242, 0.6);
+  --border: rgba(248, 247, 242, 0.15);
+  --border-hover: rgba(248, 247, 242, 0.4);
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #F8F7F2;
+    --foreground: #0E100F;
+    --muted: rgba(14, 16, 15, 0.5);
+    --muted-foreground: rgba(14, 16, 15, 0.6);
+    --border: rgba(14, 16, 15, 0.15);
+    --border-hover: rgba(14, 16, 15, 0.4);
+  }
+}
+
+/* ===== Reset ===== */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -15,28 +32,115 @@
 
 html {
   scroll-behavior: smooth;
-  padding-bottom: 0;
-  margin-bottom: 0;
 }
 
+/* ===== Body ===== */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 0;
-  margin-bottom: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/* ===== Typography ===== */
+h1 {
+  font-family: var(--font-syne), sans-serif;
   font-weight: 700;
-  letter-spacing: -0.068em;
+  letter-spacing: -0.03em;
 }
 
+h2, .badge-text {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+p, span, li, input, button, a {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* ===== Buttons ===== */
+.stroke-button {
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+  border: 1.5px solid var(--foreground);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: transparent;
+}
+
+.stroke-button:hover {
+  background: var(--foreground);
+}
+
+.stroke-button-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  color: var(--foreground);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stroke-button:hover .stroke-button-inner {
+  color: var(--background);
+}
+
+/* ===== Cards ===== */
+.stroke-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: transparent;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.stroke-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* ===== Badge ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: clamp(0.65rem, 1.1vw, 0.75rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  width: fit-content;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stroke-card:hover .badge {
+  border-color: var(--border-hover);
+  color: var(--foreground);
+}
+
+/* ===== Layout ===== */
 main {
   padding-bottom: 0;
   margin-bottom: 0;
@@ -54,13 +158,6 @@ section:last-of-type {
   padding-bottom: 0;
 }
 
-img[alt="Triad Sports"] {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  vertical-align: bottom;
-  line-height: 0;
-}
-
 section:last-of-type,
 section:last-of-type > *,
 section:last-of-type > * > * {
@@ -68,174 +165,24 @@ section:last-of-type > * > * {
   padding-bottom: 0 !important;
 }
 
-.gradient-border-button {
-  position: relative;
-  display: inline-block;
-  padding: 2px;
-  border-radius: 9999px;
-  background: linear-gradient(
-    135deg,
-    #3b82f6 0%,
-    #8b5cf6 25%,
-    #ec4899 50%,
-    #f97316 75%,
-    #ef4444 100%
-  );
-  background-size: 300% 300%;
-  animation: gradient-shift 3s ease infinite;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
-              0 0 40px rgba(139, 92, 246, 0.3),
-              0 0 60px rgba(236, 72, 153, 0.2);
+img[alt="Triad Sports"] {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  vertical-align: bottom;
+  line-height: 0;
 }
 
-.gradient-border-button::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 9999px;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    #3b82f6 0%,
-    #8b5cf6 25%,
-    #ec4899 50%,
-    #f97316 75%,
-    #ef4444 100%
-  );
-  background-size: 300% 300%;
-  animation: gradient-shift 3s ease infinite;
-  z-index: -1;
-  filter: blur(8px);
-  opacity: 0.7;
-}
-
-.gradient-border-button-inner {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #1a1a1a;
-  border-radius: 9999px;
-  color: #e5e7eb;
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.75rem;
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 640px) {
-  .gradient-border-button-inner {
-    font-size: 1.25rem;
-    padding: 1rem 2rem;
-  }
-}
-
+/* ===== Feature Grid ===== */
 @media (min-width: 768px) {
-  .gradient-border-button-inner {
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
   }
 }
 
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+@media (min-width: 1024px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
   }
 }
-
-.gradient-text {
-  background: linear-gradient(
-    135deg,
-    #3b82f6 0%,
-    #8b5cf6 25%,
-    #ec4899 50%,
-    #f97316 75%,
-    #ef4444 100%
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.feature-card {
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 1.5rem;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    #3b82f6 0%,
-    #8b5cf6 25%,
-    #ec4899 50%,
-    #f97316 75%,
-    #ef4444 100%
-  );
-  background-size: 300% 300%;
-  z-index: -1;
-  filter: blur(8px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.feature-card:hover::before {
-  opacity: 0.7;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.feature-card:hover {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
-              0 0 40px rgba(139, 92, 246, 0.3),
-              0 0 60px rgba(236, 72, 153, 0.2);
-}
-
-@media (min-width: 768px) {
-  .gradient-border-card-inner {
-    padding: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .feature-grid-new {
-    grid-template-rows: repeat(27, 1fr);
-    height: 70vh;
-    max-height: 600px;
-  }
-  .persistent-memory {
-    grid-row: 1 / 14;
-    grid-column: 1;
-  }
-  .journaling {
-    grid-row: 14 / 21;
-    grid-column: 1;
-  }
-  .knowledge-graph {
-    grid-row: 1 / 8;
-    grid-column: 2;
-  }
-  .privacy {
-    grid-row: 8 / 21;
-    grid-column: 2;
-  }
-  .conversational-intelligence {
-    grid-row: 21 / 28;
-    grid-column: 1;
-  }
-  .intelligent-nudges {
-    grid-row: 21 / 28;
-    grid-column: 2;
-  }
-}
-
