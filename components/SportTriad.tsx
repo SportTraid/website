@@ -24,24 +24,12 @@ export default function SportTriad() {
       >
         <div className="relative w-[90%] max-w-5xl" style={{ marginBottom: 0, paddingBottom: 0, lineHeight: 0 }}>
           <div className="relative w-full" style={{ marginBottom: 0, paddingBottom: 0, lineHeight: 0 }}>
-            {/* Dark mode: white logo */}
             <Image
-              src="/assets/SPORTTRIAD-white.png"
+              src="/assets/word mark.svg"
               alt="SportTriad"
               width={1200}
               height={600}
-              className="w-full h-auto object-contain object-bottom hidden dark:block"
-              priority
-              sizes="90vw"
-              style={{ marginBottom: 0, paddingBottom: 0, display: 'block', verticalAlign: 'bottom', lineHeight: 0 }}
-            />
-            {/* Light mode: black logo */}
-            <Image
-              src="/assets/SPORTTRIAD-black.png"
-              alt="SportTriad"
-              width={1200}
-              height={600}
-              className="w-full h-auto object-contain object-bottom block dark:hidden"
+              className="w-full h-auto object-contain object-bottom"
               priority
               sizes="90vw"
               style={{ marginBottom: 0, paddingBottom: 0, display: 'block', verticalAlign: 'bottom', lineHeight: 0 }}

@@ -31,7 +31,15 @@ function Word({
 
   return (
     <motion.span
-      style={{ opacity, transition: 'opacity 0.15s ease-out' }}
+      style={{
+        opacity,
+        transition: 'opacity 0.15s ease-out',
+        fontFamily: 'inherit',
+        fontWeight: 'inherit',
+        fontSize: 'inherit',
+        letterSpacing: 'inherit',
+        lineHeight: 'inherit',
+      }}
       className="inline"
     >
       {word}
@@ -73,16 +81,18 @@ export default function Intro() {
                 key={textIndex}
                 className="font-syne !font-normal text-foreground leading-[1.1] !normal-case"
                 style={{ 
-                  fontSize: 'clamp(1.2rem, 4.8vw, 5.2rem)', 
-                  fontWeight: 400, 
+                  fontFamily: 'var(--font-syne), sans-serif',
+                  fontSize: 'clamp(1.5rem, 6vw, 4.875rem)',
+                  fontWeight: 400,
                   letterSpacing: '-0.03em',
+                  lineHeight: 1.1,
                   maxWidth: '75vw',
                   width: '75vw',
                   textTransform: 'none'
                 }}
               >
                 {words.map((item, wordIndex) => (
-                  <span key={wordIndex}>
+                  <span key={wordIndex} style={{ fontFamily: 'inherit', fontWeight: 'inherit', fontSize: 'inherit', letterSpacing: 'inherit', lineHeight: 'inherit' }}>
                     <Word
                       word={item.word}
                       globalIndex={item.globalIndex}

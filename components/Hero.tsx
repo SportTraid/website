@@ -66,10 +66,9 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 pt-20 overflow-hidden">
       {/* Background gradient image */}
       <div 
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="absolute inset-0 w-full h-full pointer-events-none hero-bg"
         style={{
           backgroundImage: 'url(/assets/hero%20gradient.png)',
-          backgroundSize: '110%',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           zIndex: 0,

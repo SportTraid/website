@@ -22,19 +22,11 @@ export default function Navbar() {
             className="flex items-center cursor-pointer flex-shrink-0"
           >
             <Image
-              src="/assets/sporttriad-white-logo.png"
+              src="/assets/combination mark.svg"
               alt="SportTriad Logo"
-              width={120}
+              width={140}
               height={40}
-              className="h-6 w-auto flex-shrink-0 hidden dark:block"
-              style={{ objectFit: 'contain' }}
-            />
-            <Image
-              src="/assets/Sporttriad-black-logo.png"
-              alt="SportTriad Logo"
-              width={120}
-              height={40}
-              className="h-6 w-auto flex-shrink-0 block dark:hidden"
+              className="h-6 w-auto flex-shrink-0"
               style={{ objectFit: 'contain' }}
             />
           </motion.a>

@@ -10,18 +10,10 @@
   --muted-foreground: rgba(248, 247, 242, 0.6);
   --border: rgba(248, 247, 242, 0.15);
   --border-hover: rgba(248, 247, 242, 0.4);
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #F8F7F2;
-    --foreground: #0E100F;
-    --muted: rgba(14, 16, 15, 0.5);
-    --muted-foreground: rgba(14, 16, 15, 0.6);
-    --border: rgba(14, 16, 15, 0.15);
-    --border-hover: rgba(14, 16, 15, 0.4);
-  }
-}
+/* Single theme: dark only. No light/dark mode switch. */
 
 /* ===== Reset ===== */
 * {
@@ -184,5 +176,15 @@ img[alt="Triad Sports"] {
   .feature-grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
+  }
+}
+
+/* Hero background: fill on mobile, 110% on desktop */
+.hero-bg {
+  background-size: 110%;
+}
+@media (max-width: 767px) {
+  .hero-bg {
+    background-size: cover;
   }
 }
