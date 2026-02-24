@@ -35,6 +35,17 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <div className="hidden sm:flex items-center gap-5 font-ibm-plex-mono text-[0.65rem] tracking-[0.08em] uppercase">
               <motion.a
+                href="http://13.222.189.44:3000/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.25 }}
+                className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                Triad
+              </motion.a>
+              <motion.a
                 href="/about"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
